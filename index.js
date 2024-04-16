@@ -3,11 +3,16 @@ const mongoose = require("mongoose");
 const colors = require("colors");
 const dotenv = require("dotenv");
 
+const userRoutes = require("./src/routes/userRoute");
+
 dotenv.config();
 const app = express();
 
 //Middleware
 app.use(express.json());
+
+//Routing
+app.use("/", userRoutes);
 
 //Datbase connection
 mongoose
@@ -18,11 +23,6 @@ mongoose
   .catch(() => {
     console.log(colors.bgRed("Database Connection Failed"));
   });
-
-//Testing route
-app.get("/", (req, res) => {
-  res.send("Hey");
-});
 
 app.listen(process.env.PORT, () => {
   console.log(colors.bgGreen(`Server listening on PORT ${process.env.PORT}`));

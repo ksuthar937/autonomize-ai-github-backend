@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const { saveUser } = require("../Controllers/userController");
+const { saveUser } = require("../controllers/userController");
 
 // GitHub User Data Storage
 router.get("/save-user/:username", saveUser);

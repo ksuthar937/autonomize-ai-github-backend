@@ -118,10 +118,24 @@ const getUserFromDB = async (searchData) => {
   }
 };
 
+const deletelUser = async (username) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { username },
+      { $set: { isDeleted: true } },
+      { new: true }
+    );
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getUserFromAPI,
   storeUser,
   findUser,
   getMutualUsers,
   getUserFromDB,
+  deletelUser,
 };

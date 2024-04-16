@@ -8,6 +8,7 @@ const {
   searchUserByQuery,
   deletelUser,
   updateUser,
+  listUsers,
 } = require("../controllers/userController");
 
 // GitHub User Data Storage
@@ -24,5 +25,8 @@ router.delete("/delete-user/:username", deletelUser);
 
 // Update User Details
 router.patch("/update-user/:username", updateUser);
+
+// List Users with Sorting
+router.get("/list-users", listUsers);
 
 module.exports = router;

@@ -67,7 +67,7 @@ const deletelUser = async (req, res) => {
     if (!existUser) {
       throw new Error("User doesn't exist in database");
     }
-    const user = await userService.deletelUser(username);
+    await userService.deletelUser(username);
     res.sendStatus(204);
   } catch (error) {
     res.status(500).json({
@@ -98,10 +98,30 @@ const updateUser = async (req, res) => {
   }
 };
 
+const listUsers = async (req, res) => {
+  try {
+    const sortType = req.query.sortBy;
+    const sortOrder = req.query.order;
+
+    const users = await userService.listUsers(sortType, sortOrder);
+
+    res.status(200).json({
+      success: true,
+      length: users.length,
+      users,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   saveUser,
   mutualUsers,
   searchUserByQuery,
   deletelUser,
   updateUser,
+  listUsers,
 };

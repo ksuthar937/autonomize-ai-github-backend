@@ -144,6 +144,24 @@ const updateUser = async (username, updatedData) => {
   }
 };
 
+const listUsers = async (sortType, sortOrder) => {
+  try {
+    const users = await User.find({});
+    if (!users || users.length === 0) {
+      throw new Error("No users found");
+    }
+    return users.sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a[sortType] - b[sortType];
+      } else {
+        return b[sortType] - a[sortType];
+      }
+    });
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getUserFromAPI,
   storeUser,
@@ -152,4 +170,5 @@ module.exports = {
   getUserFromDB,
   deletelUser,
   updateUser,
+  listUsers,
 };

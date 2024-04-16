@@ -14,7 +14,7 @@ const getUserFromAPI = async (username) => {
   try {
     const gitUser = await axios(`https://api.github.com/users/${username}`, {
       auth: "ksuthar937",
-      Password: "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",
+      Password: process.env.API_PASS,
     });
     const data = gitUser?.data;
     return data;

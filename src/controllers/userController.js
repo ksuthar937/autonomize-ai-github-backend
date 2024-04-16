@@ -76,9 +76,32 @@ const deletelUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  try {
+    const username = req.params.username;
+    const existUser = await userService.findUser(username);
+
+    if (!existUser) {
+      throw new Error("User doesn't exist in database");
+    }
+    const updatedData = req.body;
+
+    const user = await userService.updateUser(username, updatedData);
+
+    res.status(202).json({
+      user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   saveUser,
   mutualUsers,
   searchUserByQuery,
   deletelUser,
+  updateUser,
 };

@@ -131,6 +131,19 @@ const deletelUser = async (username) => {
   }
 };
 
+const updateUser = async (username, updatedData) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      { username },
+      { $set: updatedData },
+      { new: true }
+    );
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getUserFromAPI,
   storeUser,
@@ -138,4 +151,5 @@ module.exports = {
   getMutualUsers,
   getUserFromDB,
   deletelUser,
+  updateUser,
 };

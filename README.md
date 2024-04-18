@@ -23,7 +23,7 @@ Update User Details: PATCH "/update-user/:username"
 List Users with Sorting: GET "/list-users" 
 
 
-For testing we can follow bellow steps: 
+##### For testing we can follow bellow steps: 
 
 GET - https://autonomize-ai-github-backend.onrender.com/save-user/ksuthar937
 

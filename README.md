@@ -21,3 +21,18 @@ Soft Delete User Recordse: DELETE "/delete-user/:username"
 Update User Details: PATCH "/update-user/:username" 
 
 List Users with Sorting: GET "/list-users" 
+
+
+For testing we can follow bellow steps: 
+
+GET - https://autonomize-ai-github-backend.onrender.com/save-user/ksuthar937
+
+GET - https://autonomize-ai-github-backend.onrender.com/find-mutual-followers/ksuthar937
+
+GET - https://autonomize-ai-github-backend.onrender.com/search-users?location=Pune,%20India
+
+GET- https://autonomize-ai-github-backend.onrender.com/list-users?sortBy=followers&order=asc
+
+DELETE - https://autonomize-ai-github-backend.onrender.com/delete/ksuthar937
+
+PATCH - https://autonomize-ai-github-backend.onrender.com/update-user/ksuthar937
